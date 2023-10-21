@@ -6,19 +6,19 @@
 #    By: ohayek <ohayek@student.42istanbul.com.t    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 21:22:15 by ohayek            #+#    #+#              #
-#    Updated: 2023/10/17 21:53:17 by ohayek           ###   ########.fr        #
+#    Updated: 2023/10/22 00:57:05 by ohayek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c
+SRC = src/floor.c src/main.c src/mlx_init.c src/player.c src/raycast.c src/textures.c src/wall.c src/wall_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 
-CC_FLAGS = -g
+CC_FLAGS =
 CC = gcc
 
-MLX_FLAGS = -lXext -lX11 -lz
+MLX_FLAGS = -framework OpenGL -framework AppKit
 MATH_FLAGS = -lm
 MLX_LB	   = minilibx-linux/libmlx.a
 
@@ -38,6 +38,16 @@ $(MLX_LB):
 	
 $(OBJ): $(SRC) 
 	$(CC) $(CC_FLAGS) -c $(SRC)
+	mv floor.o src/
+	mv main.o src/
+	mv mlx_init.o src/
+	mv player.o src/
+	mv raycast.o src/
+	mv textures.o src/
+	mv wall_2.o src/
+	mv wall.o src/
+	mv get_next_line.o get_next_line/
+	mv get_next_line_utils.o get_next_line/
 
 bonus: $(NAME_BONUS)
 

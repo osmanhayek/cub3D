@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohayek <ohayek@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 19:13:43 by ohayek            #+#    #+#             */
-/*   Updated: 2023/10/17 23:44:39 by ohayek           ###   ########.fr       */
+/*   Created: 2023/10/21 21:51:46 by ohayek            #+#    #+#             */
+/*   Updated: 2023/10/21 23:18:50 by ohayek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../include/cub3d.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <math.h>
-# include <stdio.h>
-# include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+unsigned int	access_spes_pixel(t_image *image, int tx, int ty)
+{
+	char			*pixel;
+	unsigned int	color;
 
-#define screenWidth 640
-#define screenHeight 410
-#define texWidth 64
-#define texHeight 64
-#define mapWidth 24
-#define mapHeight 24
-
-#endif
+	pixel = image->image_data + (ty * image->size_line + tx * (image->bits_per_pixel / 8));
+	color = *(unsigned int *)pixel;
+	return (color);
+}
