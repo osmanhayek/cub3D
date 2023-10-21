@@ -20,7 +20,7 @@ CC = gcc
 
 MLX_FLAGS = -framework OpenGL -framework AppKit
 MATH_FLAGS = -lm
-MLX_LB	   = minilibx-linux/libmlx.a
+MLX_LB	   = minilibx/libmlx.a
 
 LIBFT =libft/libft.a
 NAME = cub3d
@@ -34,7 +34,7 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX_LB)
 $(LIBFT):
 	make -C libft/ all
 $(MLX_LB):
-	make -C minilibx-linux/ all
+	make -C minilibx/ all
 	
 $(OBJ): $(SRC) 
 	$(CC) $(CC_FLAGS) -c $(SRC)
@@ -60,7 +60,7 @@ $(OBJ_BONUS): %.o: %.c
 clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)
 	make -C libft/ clean
-	make -C minilibx-linux/ clean
+	make -C minilibx/ clean
 		
 fclean: clean
 	rm -rf $(NAME) $(NAME_BONUS)
