@@ -6,7 +6,7 @@
 /*   By: ohayek <ohayek@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:50:00 by ohayek            #+#    #+#             */
-/*   Updated: 2023/10/21 21:27:32 by ohayek           ###   ########.fr       */
+/*   Updated: 2023/10/24 17:25:13 by ohayek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,15 @@ void	ft_floor_raycast(t_data *cub3d)
 		ft_search_floor(cub3d, y);
 		y++;
 	}
+}
+
+int	ft_exitt(void *data)
+{
+	t_data	*c;
+
+	c = (t_data *)data;
+	mlx_destroy_image(c->mlx->mlx_ptr, c->mlx->main_image);
+	mlx_clear_window(c->mlx->mlx_ptr, c->mlx->mlx_window);
+	exit(0);
+	return (0);
 }

@@ -18,7 +18,7 @@ size_t	ft_strlenn(char *str)
 
 	i = 0;
 	while (str[i])
-	i++;
+		i++;
 	return (i);
 }
 
@@ -39,7 +39,8 @@ char	*ft_append(char *s1, char *s2)
 		return (result);
 	}
 	j = 0;
-	result = (char *)malloc(sizeof(char) * (ft_strlenn(s1) + ft_strlenn(s2)) + 1);
+	result = (char *)malloc(sizeof(char) * \
+	(ft_strlenn(s1) + ft_strlenn(s2)) + 1);
 	if (!result)
 		return (NULL);
 	while (s1[j])
@@ -101,7 +102,7 @@ char	*find_line(char *res)
 			line[++i] = '\0';
 			return (line);
 		}
-	i++;
+		i++;
 	}
 	line[i] = '\0';
 	return (line);

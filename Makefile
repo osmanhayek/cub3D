@@ -6,16 +6,16 @@
 #    By: ohayek <ohayek@student.42istanbul.com.t    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 21:22:15 by ohayek            #+#    #+#              #
-#    Updated: 2023/10/22 00:57:05 by ohayek           ###   ########.fr        #
+#    Updated: 2023/10/24 16:40:29 by ohayek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/floor.c src/main.c src/mlx_init.c src/player.c src/raycast.c src/textures.c src/wall.c src/wall_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRC = src/floor.c src/main.c src/mlx_init.c src/player.c src/raycast.c src/textures.c src/wall.c src/wall_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c src/move.c src/parser.c\
+	  src/parser1.c src/parser2.c src/parser3.c src/parser4.c
 OBJ = $(SRC:.c=.o)
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 
-CC_FLAGS =
+CC_FLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 MLX_FLAGS = -framework OpenGL -framework AppKit
@@ -23,8 +23,7 @@ MATH_FLAGS = -lm
 MLX_LB	   = minilibx/libmlx.a
 
 LIBFT =libft/libft.a
-NAME = cub3d
-NAME_BONUS = fdf_bonus
+NAME = cub3D
 
 all: $(NAME)
 
@@ -46,16 +45,14 @@ $(OBJ): $(SRC)
 	mv textures.o src/
 	mv wall_2.o src/
 	mv wall.o src/
+	mv move.o src/
 	mv get_next_line.o get_next_line/
 	mv get_next_line_utils.o get_next_line/
-
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS) : $(OBJ_BONUS) $(LIBFT) $(MLX_LB)
-	$(CC) $(CC_FLAGS) $(MATH_FLAGS) $(MLX_FLAGS) $(OBJ_BONUS) $(LIBFT) $(MLX_LB) -o $(NAME_BONUS)
-
-$(OBJ_BONUS): %.o: %.c
-	$(CC) $(CC_FLAGS) -c $< -o $@
+	mv parser.o src/
+	mv parser1.o src/
+	mv parser2.o src/
+	mv parser3.o src/
+	mv parser4.o src/
 
 clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)
